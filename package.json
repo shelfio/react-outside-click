@@ -1,11 +1,11 @@
 {
-  "name": "@shelf/xxxxxx",
+  "name": "@shelf/react-outside-click",
   "version": "0.0.0",
-  "description": "xxxxxx",
+  "description": "React library for handling outside clicks of a specified element",
   "license": "MIT",
   "author": {
-    "name": "Vlad Holubiev",
-    "email": "vlad@shelf.io",
+    "name": "Andrii Butsa",
+    "email": "andrii.butsa@shelf.io",
     "url": "https://shelf.io"
   },
   "main": "lib",
