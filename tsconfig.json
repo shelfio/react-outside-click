@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "outDir": "lib"
+    "outDir": "lib",
   },
-  "include": ["src/index.ts"]
+  "include": ["src"]
 }
