@@ -8,6 +8,7 @@
     "email": "andrii.butsa@shelf.io",
     "url": "https://shelf.io"
   },
+  "sideEffects": false,
   "type": "module",
   "exports": "./lib/index.js",
   "types": "lib/index.d.ts",
@@ -32,6 +33,7 @@
   "prettier": "@shelf/prettier-config",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "7.22.5",
     "@shelf/babel-config": "2.0.1",
     "@shelf/eslint-config": "2.29.3",
     "@shelf/prettier-config": "1.0.0",
@@ -59,7 +61,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false,
   "size-limit": [
     {
       "path": "lib/index.js",
