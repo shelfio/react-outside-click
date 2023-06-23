@@ -6,7 +6,7 @@ export const useClickOutside = ({
   onOutsideClick,
   disabled,
   mouseEvent = 'mousedown',
-  options,
+  options = true,
 }: UseClickOutsideHandlerProps) => {
   const savedHandler = useRef(onOutsideClick);
 
@@ -14,17 +14,22 @@ export const useClickOutside = ({
     savedHandler.current = onOutsideClick;
   }, [onOutsideClick]);
 
-  const handleClickOutside: typeof onOutsideClick = (event: MouseEvent) => {
-    if (ref.current && !ref.current.contains(event.target as Node)) {
-      savedHandler.current(event);
-    }
-  };
-
   useEffect(() => {
-    !disabled && document.addEventListener(mouseEvent, handleClickOutside, options);
+    const handleClickOutside: typeof onOutsideClick = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        savedHandler.current(event);
+      }
+    };
+
+    if (!disabled) {
+      // `useCapture` is set to true by default to handle the capture phase of the event.
+      // It ensures that the click outside event will be captured before any click events on the descendants,
+      // even if `stopPropagation` is used.
+      document.addEventListener(mouseEvent, handleClickOutside, options);
+    }
 
     return () => {
       document.removeEventListener(mouseEvent, handleClickOutside, options);
     };
-  }, [mouseEvent, disabled, options]);
+  }, [mouseEvent, disabled, options, ref]);
 };
