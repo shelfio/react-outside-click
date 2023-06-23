@@ -1,85 +1,75 @@
 import {fireEvent, render, renderHook, screen} from '@testing-library/react';
 import {ClickOutsideProvider, useClickOutside} from './index';
+import { UseClickOutsideHandlerProps } from "./types";
 
 const onOutsideClick = jest.fn();
 
 afterEach(() => jest.clearAllMocks());
 
+const renderUseClickOutside = (ref: UseClickOutsideHandlerProps['ref'], disabled?: boolean) => renderHook(() =>
+  useClickOutside({
+    ref,
+    onOutsideClick,
+    disabled
+  })
+);
+
+const renderClickOutsideProvider = (options?: boolean | AddEventListenerOptions) => render(
+  <div>
+    <button onMouseDown={e => e.stopPropagation()}>outside</button>
+    <ClickOutsideProvider onOutsideClick={onOutsideClick} options={options}>
+      <button>child</button>
+    </ClickOutsideProvider>
+  </div>
+);
+
 describe('useClickOutside', () => {
   it('should call onOutsideClick when clicked outside ref element', () => {
     const ref = {current: document.createElement('div')};
-    const event = new MouseEvent('mousedown');
 
-    renderHook(() =>
-      useClickOutside({
-        ref,
-        onOutsideClick,
-      })
-    );
+    renderUseClickOutside(ref)
 
-    fireEvent(document, event);
+    fireEvent.mouseDown(document);
 
-    expect(onOutsideClick).toHaveBeenCalledWith(event);
+    expect(onOutsideClick).toHaveBeenCalled();
   });
 
   it('should not call onOutsideClick when clicked inside ref element', () => {
     const ref = {current: document.createElement('div')};
     const innerElement = document.createElement('span');
     ref.current.appendChild(innerElement);
-    const event = new MouseEvent('mousedown', {bubbles: true});
-    renderHook(() =>
-      useClickOutside({
-        ref,
-        onOutsideClick,
-      })
-    );
 
-    fireEvent(innerElement, event);
+    renderUseClickOutside(ref)
+
+    fireEvent.mouseDown(innerElement);
 
     expect(onOutsideClick).not.toHaveBeenCalled();
   });
 
   it('should not call onOutsideClick when disabled is true', () => {
     const ref = {current: document.createElement('div')};
-    const event = new MouseEvent('mousedown');
 
-    renderHook(() =>
-      useClickOutside({
-        ref,
-        onOutsideClick,
-        disabled: true,
-      })
-    );
+    renderUseClickOutside(ref,true)
 
-    fireEvent(document, event);
+    fireEvent.mouseDown(document);
 
     expect(onOutsideClick).not.toHaveBeenCalled();
   });
 
   it('should not call onOutsideClick when ref current = null', () => {
     const ref = {current: null};
-    const event = new MouseEvent('mousedown');
 
-    renderHook(() =>
-      useClickOutside({
-        ref,
-        onOutsideClick,
-      })
-    );
+    renderUseClickOutside(ref)
 
-    fireEvent(document, event);
+    fireEvent.mouseDown(document);
 
     expect(onOutsideClick).not.toHaveBeenCalled();
   });
 });
 
-describe('ClickOutsideProvider', () => {
+describe('<ClickOutsideProvider />', () => {
   it('should render children and not call onOutsideClick when clicked inside ref element', () => {
-    render(
-      <ClickOutsideProvider onOutsideClick={onOutsideClick}>
-        <span>child</span>
-      </ClickOutsideProvider>
-    );
+    renderClickOutsideProvider();
 
     const child = screen.getByText('child');
 
@@ -90,15 +80,19 @@ describe('ClickOutsideProvider', () => {
     expect(onOutsideClick).not.toHaveBeenCalled();
   });
 
-  it('should call onOutsideClick when clicked outside ref element', () => {
-    render(
-      <ClickOutsideProvider onOutsideClick={onOutsideClick}>
-        <button>child</button>
-      </ClickOutsideProvider>
-    );
+  it('should call onOutsideClick when clicked outside ref element even if outside element makes stopPropagation', () => {
+    renderClickOutsideProvider();
 
-    fireEvent.mouseDown(document);
+    fireEvent.mouseDown(screen.getByText('outside'));
 
     expect(onOutsideClick).toHaveBeenCalled();
+  });
+
+  it('should not call onOutsideClick when clicked outside ref element and useCapture is false and outside element makes stopPropagation', () => {
+    renderClickOutsideProvider(false);
+
+    fireEvent.mouseDown(screen.getByText('outside'));
+
+    expect(onOutsideClick).not.toHaveBeenCalled();
   });
 });
