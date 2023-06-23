@@ -1,6 +1,7 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   preset: 'ts-jest/presets/default-esm',
   coverageThreshold: {
     global: {
