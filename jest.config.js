@@ -1,6 +1,7 @@
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  preset: 'ts-jest/presets/default-esm',
   coverageThreshold: {
     global: {
       branches: 100,
