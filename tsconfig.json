@@ -1,5 +1,11 @@
 {
   "extends": "@shelf/tsconfig/frontend",
+  "exclude": [
+    "node_modules",
+    "**/*.mock.ts",
+    "**/*.stub.ts",
+    "**/*.test.*"
+  ],
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
