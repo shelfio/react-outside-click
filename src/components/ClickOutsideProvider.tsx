@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
-import type {OutsideClickWrapperProps} from '../types';
+import type {ClickOutsideProviderProps} from '../types';
 import {useClickOutside} from './useClickOutside';
 
-export const OutsideClickWrapper = ({children, ...props}: OutsideClickWrapperProps) => {
+export const ClickOutsideProvider = ({children, ...props}: ClickOutsideProviderProps) => {
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside({ref, ...props});
 

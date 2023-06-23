@@ -1,4 +1,4 @@
-import {OutsideClickWrapper} from './components/OutsideClickWrapper';
+import {ClickOutsideProvider} from './components/ClickOutsideProvider';
 import {useClickOutside} from './components/useClickOutside';
 
-export {OutsideClickWrapper, useClickOutside};
+export {ClickOutsideProvider, useClickOutside};

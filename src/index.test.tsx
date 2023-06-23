@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, render, renderHook, screen} from '@testing-library/react';
-import {OutsideClickWrapper, useClickOutside} from './index';
+import {ClickOutsideProvider, useClickOutside} from './index';
 
 const onOutsideClick = jest.fn();
 
@@ -74,12 +74,12 @@ describe('useClickOutside', () => {
   });
 });
 
-describe('onClickOutside', () => {
+describe('ClickOutsideProvider', () => {
   it('should render children and not call onOutsideClick when clicked inside ref element', () => {
     render(
-      <OutsideClickWrapper onOutsideClick={onOutsideClick}>
+      <ClickOutsideProvider onOutsideClick={onOutsideClick}>
         <span>child</span>
-      </OutsideClickWrapper>
+      </ClickOutsideProvider>
     );
 
     const child = screen.getByText('child');
@@ -93,9 +93,9 @@ describe('onClickOutside', () => {
 
   it('should call onOutsideClick when clicked outside ref element', () => {
     render(
-      <OutsideClickWrapper onOutsideClick={onOutsideClick}>
+      <ClickOutsideProvider onOutsideClick={onOutsideClick}>
         <button>child</button>
-      </OutsideClickWrapper>
+      </ClickOutsideProvider>
     );
 
     fireEvent.mouseDown(document);

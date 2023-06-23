@@ -7,7 +7,7 @@ type CommonProps = {
   options?: boolean | AddEventListenerOptions;
 };
 
-export type OutsideClickWrapperProps = {children: ReactNode} & CommonProps;
+export type ClickOutsideProviderProps = {children: ReactNode} & CommonProps;
 
 export type UseClickOutsideHandlerProps<T extends HTMLElement = HTMLElement> = {
   ref: RefObject<T>;
