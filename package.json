@@ -9,9 +9,9 @@
     "url": "https://shelf.io"
   },
   "sideEffects": false,
-  "main": "lib/index.js",
   "type": "module",
   "exports": "./lib/index.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib"
@@ -28,7 +28,7 @@
   },
   "lint-staged": {
     "*.{html,md,yml}": "prettier --write",
-    "*.{js,ts,json}": "eslint --fix",
+    "*.{ts,js,json,tsx,jsx}": "eslint --fix",
     ".circleci/config.yml": ".husky/validate-circleci-config.sh"
   },
   "prettier": "@shelf/prettier-config",
