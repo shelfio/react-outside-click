@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import {useRef} from 'react';
 import type {ClickOutsideProviderProps} from '../types';
 import {useClickOutside} from './useClickOutside';
 
