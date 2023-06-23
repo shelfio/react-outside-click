@@ -22,7 +22,7 @@ export const useClickOutside = ({
     };
 
     if (!disabled) {
-      // `useCapture` is set to true by default to handle the capture phase of the event.
+      // `useCapture` for `options` is set to true by default to handle the capture phase of the event.
       // It ensures that the click outside event will be captured before any click events on the descendants,
       // even if `stopPropagation` is used.
       document.addEventListener(mouseEvent, handleClickOutside, options);
