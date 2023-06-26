@@ -99,7 +99,7 @@ Type: `function  (required)`
 
 A function that will be called when an outside click is detected.
 
-**options:**
+**options:** `(optional)`
 
 > **disabled**
 
