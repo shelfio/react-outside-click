@@ -1,9 +1,16 @@
 {
   "extends": "@shelf/tsconfig/frontend",
+  "exclude": [
+    "node_modules",
+    "**/*.mock.ts",
+    "**/*.stub.ts",
+    "**/*.test.*"
+  ],
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "outDir": "lib"
+    "outDir": "lib",
+    "jsx": "react-jsx"
   },
-  "include": ["src/index.ts"]
+  "include": ["src"]
 }
