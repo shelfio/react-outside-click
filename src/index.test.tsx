@@ -1,23 +1,23 @@
 import {fireEvent, render, renderHook, screen} from '@testing-library/react';
 import {ClickOutsideProvider, useClickOutside} from './index';
-import { UseClickOutsideHandlerProps } from "./types";
+import { Options, Ref } from "./types";
 
 const onOutsideClick = jest.fn();
 
 afterEach(() => jest.clearAllMocks());
 
-const renderUseClickOutside = (ref: UseClickOutsideHandlerProps['ref'], disabled?: boolean) => renderHook(() =>
-  useClickOutside({
+const renderUseClickOutside = (ref: Ref, options?: Options) => renderHook(() =>
+  useClickOutside(
     ref,
     onOutsideClick,
-    disabled
-  })
+    options,
+  )
 );
 
-const renderClickOutsideProvider = (options?: boolean | AddEventListenerOptions) => render(
+const renderClickOutsideProvider = (options?: Options) => render(
   <div>
     <button onMouseDown={e => e.stopPropagation()}>outside</button>
-    <ClickOutsideProvider onOutsideClick={onOutsideClick} options={options}>
+    <ClickOutsideProvider onOutsideClick={onOutsideClick} {...options}>
       <button>child</button>
     </ClickOutsideProvider>
   </div>
@@ -32,6 +32,21 @@ describe('useClickOutside', () => {
     fireEvent.mouseDown(document);
 
     expect(onOutsideClick).toHaveBeenCalled();
+  });
+
+  it('should call onOutsideClick with proper event when clicked outside ref element', () => {
+    const ref = {current: document.createElement('div')};
+    const mouseUpEvent = new MouseEvent('mouseup');
+
+    renderUseClickOutside(ref,{mouseEvent: 'mouseup'})
+
+    fireEvent.mouseDown(document);
+
+    expect(onOutsideClick).not.toHaveBeenCalled();
+
+    fireEvent(document, mouseUpEvent)
+
+    expect(onOutsideClick).toHaveBeenCalledWith(mouseUpEvent);
   });
 
   it('should not call onOutsideClick when clicked inside ref element', () => {
@@ -49,7 +64,7 @@ describe('useClickOutside', () => {
   it('should not call onOutsideClick when disabled is true', () => {
     const ref = {current: document.createElement('div')};
 
-    renderUseClickOutside(ref,true)
+    renderUseClickOutside(ref, {disabled:true})
 
     fireEvent.mouseDown(document);
 
@@ -89,7 +104,7 @@ describe('<ClickOutsideProvider />', () => {
   });
 
   it('should not call onOutsideClick when clicked outside ref element and useCapture is false and outside element makes stopPropagation', () => {
-    renderClickOutsideProvider(false);
+    renderClickOutsideProvider({listenerOptions:false});
 
     fireEvent.mouseDown(screen.getByText('outside'));
 
