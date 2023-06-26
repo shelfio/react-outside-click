@@ -1,6 +1,6 @@
 {
   "name": "@shelf/react-outside-click",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React library for handling outside clicks of a specified element",
   "license": "MIT",
   "author": {
