@@ -20,7 +20,7 @@
     "build": "rm -rf lib/ && tsc",
     "coverage": "yarn test --coverage",
     "lint": "yarn lint:ci --fix",
-    "lint:ci": "eslint . --ext .js,.ts,.json",
+    "lint:ci": "eslint . --ext .js,.ts,.tsx,.json",
     "prepack": "yarn build",
     "size": "size-limit",
     "test": "TZ=UTC jest src",
