@@ -23,7 +23,7 @@ $ yarn add @shelf/react-outside-click
 ```js
 import { ClickOutsideProvider } from '@shelf/react-outside-click';
 
-const App = () => {
+const Component = () => {
   const onOutsideClick = () => {
     console.log('Clicked outside')
   };
@@ -75,7 +75,7 @@ import { useClickOutside } from '@shelf/react-outside-click';
 const Component() {
   const ref = useRef(null)
 
-  const handleClickInside = () => {
+  const handleClickOutside = () => {
     console.log('Clicked outside')
   }
 
