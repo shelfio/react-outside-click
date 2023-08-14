@@ -1,8 +1,30 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
+  modulePaths: ['<rootDir>/src'],
+  roots: ['<rootDir>/src'],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  preset: 'ts-jest/presets/default-esm',
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+  coverageReporters: ['clover', 'text'],
+  coveragePathIgnorePatterns: ['.stories.*', 'types.ts'],
+  moduleNameMapper: {
+    '\\.(css|scss|svg)$': 'identity-obj-proxy',
+  },
+  modulePathIgnorePatterns: ['__test__'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
+        },
+      },
+    ],
+  },
   coverageThreshold: {
     global: {
       branches: 100,
