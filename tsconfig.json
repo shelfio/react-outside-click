@@ -10,7 +10,6 @@
     "noEmit": false,
     "declaration": true,
     "outDir": "lib",
-    "jsx": "react-jsx"
   },
   "include": ["src"]
 }
