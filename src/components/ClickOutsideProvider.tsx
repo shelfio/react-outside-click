@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 import type {ClickOutsideProviderProps} from '../types';
-import {useClickOutside} from './useClickOutside';
+import {useClickOutside} from './useClickOutside.jsx';
 
 export const ClickOutsideProvider = ({
   children,

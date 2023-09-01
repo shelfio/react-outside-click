@@ -1,4 +1,4 @@
-import {ClickOutsideProvider} from './components/ClickOutsideProvider.js';
-import {useClickOutside} from './components/useClickOutside.js';
+import {ClickOutsideProvider} from './components/ClickOutsideProvider.jsx';
+import {useClickOutside} from './components/useClickOutside.jsx';
 
 export {ClickOutsideProvider, useClickOutside};
