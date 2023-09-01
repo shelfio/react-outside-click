@@ -11,7 +11,8 @@
     "declaration": true,
     "outDir": "lib",
     "jsx": "react-jsx",
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }
