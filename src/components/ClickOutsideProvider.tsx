@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import type {ClickOutsideProviderProps} from '../types';
+import type {ClickOutsideProviderProps} from '../types.js';
 import {useClickOutside} from './useClickOutside.jsx';
 
 export const ClickOutsideProvider = ({

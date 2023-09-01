@@ -1,5 +1,5 @@
 import {useEffect, useRef} from 'react';
-import type {ClickOutsideHandler, Options, Ref} from '../types';
+import type {ClickOutsideHandler, Options, Ref} from '../types.js';
 
 export const useClickOutside = (
   ref: Ref,
