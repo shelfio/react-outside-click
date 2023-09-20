@@ -37,7 +37,7 @@
     "@shelf/eslint-config": "2.29.3",
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.0.11",
-    "@size-limit/esbuild-why": "8.2.6",
+    "@size-limit/esbuild-why": "9.0.0",
     "@size-limit/preset-small-lib": "8.2.6",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
