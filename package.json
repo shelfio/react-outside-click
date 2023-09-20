@@ -38,7 +38,7 @@
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.0.11",
     "@size-limit/esbuild-why": "8.2.6",
-    "@size-limit/preset-small-lib": "8.2.6",
+    "@size-limit/preset-small-lib": "9.0.0",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
     "@types/jest": "29.5.4",
