@@ -1,6 +1,6 @@
 import {fireEvent, render, renderHook, screen} from '@testing-library/react';
-import type {Options, Ref} from './types';
-import {ClickOutsideProvider, useClickOutside} from './index';
+import type {Options, Ref} from './types.js';
+import {ClickOutsideProvider, useClickOutside} from './index.js';
 
 const onOutsideClick = jest.fn();
 

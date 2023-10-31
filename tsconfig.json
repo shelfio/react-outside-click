@@ -9,6 +9,8 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
+    "module": "Node16",
+    "moduleResolution": "node16",
     "outDir": "lib",
     "jsx": "react-jsx"
   },
