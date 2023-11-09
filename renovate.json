@@ -1,6 +1,6 @@
 {
   "extends": ["github>shelfio/renovate-config-public"],
-  "labels": ["frontend", "dependencies"],
+  "labels": ["frontend"],
   "ignoreDeps": [
     "cimg/node"
   ]
