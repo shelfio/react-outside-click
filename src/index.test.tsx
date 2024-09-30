@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import {fireEvent, render, renderHook, screen} from '@testing-library/react';
 import type {Options, Ref} from './types.js';
 import {ClickOutsideProvider, useClickOutside} from './index.js';

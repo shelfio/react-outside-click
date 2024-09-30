@@ -1,7 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const config = {
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['./jest.setup.ts'],
   preset: 'ts-jest/presets/default-esm',
   resolver: 'ts-jest-resolver',
   coverageThreshold: {
