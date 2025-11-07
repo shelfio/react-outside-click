@@ -26,11 +26,6 @@
     "test": "TZ=UTC jest src",
     "type-check": "tsc --noEmit"
   },
-  "lint-staged": {
-    "*.{html,md,yml}": "prettier --write",
-    "*.{ts,js,json,tsx,jsx}": "eslint --fix",
-    ".circleci/config.yml": ".husky/validate-circleci-config.sh"
-  },
   "prettier": "@shelf/prettier-config",
   "devDependencies": {
     "@shelf/eslint-config": "4.2.1",
@@ -72,5 +67,9 @@
       "path": "lib/index.js",
       "limit": "425 B"
     }
-  ]
+  ],
+  "lint-staged": {
+    "*.{html,md,yml}": "prettier --write",
+    "*.{ts,js,json,tsx,jsx}": "eslint --fix"
+  }
 }
